@@ -286,3 +286,30 @@ footer p {
 .information-grid9 { grid-area: 5 / 1 / 6 / 2; }
 .information-grid10 { grid-area: 5 / 2 / 6 / 3; }
 
+.form-container{
+  display: flex;
+  flex-direction: column;
+}
+
+.form-input-container{
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.form-input-container label{
+  margin: 5px;
+  margin-left: 0px;
+}
+
+.form-input-container input{
+  padding: 5px;
+  margin: 5px;
+  margin-left: 0px;
+  max-width: 250px;
+}
+
+.form-input-container input[type="submit"]{
+  width: 100px;
+}

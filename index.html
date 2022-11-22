@@ -10,41 +10,61 @@
 </head>
 
 <script>
-    function formSubmit(event) {
-        console.warn("TETSTSTSTST")
-        var url = "https://docs.google.com/forms/u/0/d/e/1FAIpQLScpgfvCRqHilctHXQHNHyqR_8EK8hmOWzcJZjs6VH6ZBa8IWw/formResponse";
-        fetch(url, {
-            "headers": {
-                "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
-                "accept-language": "en-US,en;q=0.9",
-                "cache-control": "max-age=0",
-                "content-type": "application/x-www-form-urlencoded",
-                "sec-ch-ua": "\"Google Chrome\";v=\"107\", \"Chromium\";v=\"107\", \"Not=A?Brand\";v=\"24\"",
-                "sec-ch-ua-mobile": "?0",
-                "sec-ch-ua-platform": "\"Windows\"",
-                "sec-fetch-dest": "iframe",
-                "sec-fetch-mode": "navigate",
-                "sec-fetch-site": "same-origin",
-                "sec-fetch-user": "?1",
-                "upgrade-insecure-requests": "1",
-                "x-chrome-connected": "source=Chrome,id=107330622612448266543,mode=0,enable_account_consistency=false,consistency_enabled_by_default=false",
-                "x-client-data": "CJW2yQEIpbbJAQjEtskBCKmdygEIkqHLAQjF4cwBCPLtzAEI/u3MAQ=="
-            },
-            "referrer": "https://docs.google.com/forms/d/e/1FAIpQLScpgfvCRqHilctHXQHNHyqR_8EK8hmOWzcJZjs6VH6ZBa8IWw/viewform?embedded=true&fbzx=7119438648536718658",
-            "referrerPolicy": "strict-origin-when-cross-origin",
-            "body": new FormData(event.target),
-            "method": "POST",
-            "mode": "cors",
-            "credentials": "include"
-        });
-
-        event.preventDefault();
-    }
+    let signed_up = false
 
     window.addEventListener("load", () => {
-        // and you can attach form submit event like this for example
-        document.getElementById("formId").addEventListener("submit", formSubmit);
         
+        let url = "https://docs.google.com/forms/u/0/d/e/1FAIpQLScpgfvCRqHilctHXQHNHyqR_8EK8hmOWzcJZjs6VH6ZBa8IWw/formResponse"; //action url
+        let form = document.querySelector("#formId"); //form element
+
+        console.log(form)
+
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();//prevent default behaviour
+
+            let bodyData = getInputData();
+            if(bodyData === undefined){
+                return
+            }
+
+            fetch(url, {
+                method: "POST",
+                mode: "no-cors",
+                header: {
+                    'Content-Type': 'application/json'
+                },
+                body: bodyData
+            })
+                .then(signed_up = true)
+                .catch(); //promise based
+        });
+
+        //populating input data
+        function getInputData() {
+            let dataToPost = new FormData(); //formdata API
+
+            let name = document.getElementById("input1").value
+            let email = document.getElementById("input2").value
+
+            if(name === ""){
+                alert("Name is required")
+                return undefined;
+            }
+            else if(email === ""){
+                alert("Email is required")
+                return undefined
+            }
+            else if(email === "" && name === ""){
+                alert("Email and name is required")
+                return undefined;
+            }
+
+            //fill name attributes to corresponding values
+            dataToPost.append("entry.2100287075", name);
+            dataToPost.append("entry.1074724636", email);
+
+            return dataToPost;
+        }
     })
 
     function setHeight(px){
@@ -78,47 +98,20 @@
             <div class="getting-started">
                 <h1>Participate</h1>
                 <p>Sign up for the next Danish Snakebot Championship hosted by Cygni, part of accenture.</p>
-                <!-- <iframe id="google-form" src="https://docs.google.com/forms/d/e/1FAIpQLScpgfvCRqHilctHXQHNHyqR_8EK8hmOWzcJZjs6VH6ZBa8IWw/viewform?embedded=true" 
-                    width="640" 
-                    height="710" 
-                    frameborder="0" 
-                    marginheight="0" 
-                    marginwidth="0" 
-                    style="margin-left:-30px"
-                >
-                    Loading…
-                </iframe> -->
-
-                <form id="formId" onsubmit="formSubmit(event)">
-                    <input type="text" id="entry.2100287075" name="entry.2100287075"/>
-                    <input type="text" id="entry.1074724636" name="entry.1074724636"/>
-                    <input type="submit" value="Submit" />
+              
+                <form id="formId" class="form-container">
+                    <div class="form-input-container">
+                        <label for="input1" style="color: white;" >Name *</label>
+                        <input required type="text" id="input1" name="entry.2100287075" placeholder="your name"/>
+                    </div>
+                    <div class="form-input-container">
+                        <label for="input2" style="color: white;">Email *</label>
+                        <input required type="email" id="input2" name="entry.1074724636" placeholder="snake@bot.com"/>
+                    </div>
+                    <div class="form-input-container">
+                        <input type="submit" value="Submit" />
+                    </div>
                 </form>
-
-                fetch("https://docs.google.com/forms/u/0/d/e/1FAIpQLScpgfvCRqHilctHXQHNHyqR_8EK8hmOWzcJZjs6VH6ZBa8IWw/formResponse?embedded=true", {
-                    "headers": {
-                      "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
-                      "accept-language": "en-US,en;q=0.9",
-                      "cache-control": "max-age=0",
-                      "content-type": "application/x-www-form-urlencoded",
-                      "sec-ch-ua": "\"Google Chrome\";v=\"107\", \"Chromium\";v=\"107\", \"Not=A?Brand\";v=\"24\"",
-                      "sec-ch-ua-mobile": "?0",
-                      "sec-ch-ua-platform": "\"Windows\"",
-                      "sec-fetch-dest": "iframe",
-                      "sec-fetch-mode": "navigate",
-                      "sec-fetch-site": "same-origin",
-                      "sec-fetch-user": "?1",
-                      "upgrade-insecure-requests": "1",
-                      "x-chrome-connected": "source=Chrome,id=107330622612448266543,mode=0,enable_account_consistency=false,consistency_enabled_by_default=false",
-                      "x-client-data": "CJW2yQEIpbbJAQjEtskBCKmdygEIkqHLAQjF4cwBCPLtzAEI/u3MAQ=="
-                    },
-                    "referrer": "https://docs.google.com/forms/d/e/1FAIpQLScpgfvCRqHilctHXQHNHyqR_8EK8hmOWzcJZjs6VH6ZBa8IWw/viewform?embedded=true&fbzx=7119438648536718658",
-                    "referrerPolicy": "strict-origin-when-cross-origin",
-                    "body": "entry.2100287075=test&entry.1074724636=test&dlut=1669122506339&hud=true&fvv=1&partialResponse=%5Bnull%2Cnull%2C%227119438648536718658%22%5D&pageHistory=0&fbzx=7119438648536718658",
-                    "method": "POST",
-                    "mode": "cors",
-                    "credentials": "include"
-                  });
 
                 <h2>Event information</h2>
                 <div class="information-grid">
