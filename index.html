@@ -6,14 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles.css">
-    <title>Document</title>
+    <title>Danish Snakebot Championship</title>
 </head>
 
 <script>
     let signed_up = false
 
     window.addEventListener("load", () => {
-        
+
         let url = "https://docs.google.com/forms/u/0/d/e/1FAIpQLScpgfvCRqHilctHXQHNHyqR_8EK8hmOWzcJZjs6VH6ZBa8IWw/formResponse"; //action url
         let form = document.querySelector("#formId"); //form element
 
@@ -23,7 +23,7 @@
             e.preventDefault();//prevent default behaviour
 
             let bodyData = getInputData();
-            if(bodyData === undefined){
+            if (bodyData === undefined) {
                 return
             }
 
@@ -45,16 +45,17 @@
 
             let name = document.getElementById("input1").value
             let email = document.getElementById("input2").value
+            let dietaryRestrictions = document.getElementById("input3").value
 
-            if(name === ""){
+            if (name === "") {
                 alert("Name is required")
                 return undefined;
             }
-            else if(email === ""){
+            else if (email === "") {
                 alert("Email is required")
                 return undefined
             }
-            else if(email === "" && name === ""){
+            else if (email === "" && name === "") {
                 alert("Email and name is required")
                 return undefined;
             }
@@ -62,14 +63,15 @@
             //fill name attributes to corresponding values
             dataToPost.append("entry.2100287075", name);
             dataToPost.append("entry.1074724636", email);
+            dataToPost.append("entry.730702305", dietaryRestrictions)
 
             return dataToPost;
         }
     })
 
-    function setHeight(px){
+    function setHeight(px) {
         const iframe = document.getElementById("google-form")
-        iframe.setAttribute("height", `${px}px`) 
+        iframe.setAttribute("height", `${px}px`)
     }
 </script>
 
@@ -90,23 +92,27 @@
         <section>
             <div class="header-image">
                 <div class="header-content">
-                    <h1>Welcome to Danish Snakebot Competition!</h1>
+                    <h1>Welcome to Danish Snakebot Competition for Students!</h1>
                     <img src="./assets/cygni-logo.svg" alt="cygni-logo">
-                    
+
                 </div>
             </div>
             <div class="getting-started">
                 <h1>Participate</h1>
                 <p>Sign up for the next Danish Snakebot Championship hosted by Cygni, part of accenture.</p>
-              
+
                 <form id="formId" class="form-container">
                     <div class="form-input-container">
-                        <label for="input1" style="color: white;" >Name *</label>
-                        <input required type="text" id="input1" name="entry.2100287075" placeholder="your name"/>
+                        <label for="input1" style="color: white;">Name *</label>
+                        <input required type="text" id="input1" name="entry.2100287075" placeholder="your name" />
                     </div>
                     <div class="form-input-container">
                         <label for="input2" style="color: white;">Email *</label>
-                        <input required type="email" id="input2" name="entry.1074724636" placeholder="snake@bot.com"/>
+                        <input required type="email" id="input2" name="entry.1074724636" placeholder="snake@bot.com" />
+                    </div>
+                    <div class="form-input-container">
+                        <label for="input2" style="color: white;">Dietary restrictions</label>
+                        <input type="text" id="input3" name="entry.730702305" placeholder="vegan, nut allergy..." />
                     </div>
                     <div class="form-input-container">
                         <input type="submit" value="Submit" />
@@ -114,19 +120,39 @@
                 </form>
 
                 <h2>Event information</h2>
-                <div class="information-grid">
-                    <div class="information-grid1"><p><strong>Date</strong></p></div>
-                    <div class="information-grid4"><p><strong>Time</strong></p></div>
-                    <div class="information-grid5"><p><strong>Location</strong></p></div>
-                    <div class="information-grid8"><p><strong>Food/Drink</strong></p></div>
-                    <div class="information-grid9"><p><strong>Snakes</strong></p></div>
 
-                    <div class="information-grid2"><p>...</p></div>
-                    <div class="information-grid3"><p>...</p></div>
-                    <div class="information-grid6"><p>...</p></div>
-                    <div class="information-grid7"><p>Yes</p></div>
-                    <div class="information-grid10"><p>Yes</p></div>
-                </div> 
+
+                <table class="customTable">
+                    <colgroup>
+                        <col style="width:20%">
+                        <col style="width:80%">
+                      </colgroup> 
+                    <tbody>
+                        <tr>
+                            <td>Date</td>
+                            <td>10. January 2023</td>
+                        </tr>
+                        <tr>
+                            <td>Time</td>
+                            <td>18.00-21.00</td>
+                        </tr>
+                        <tr>
+                            <td>Location</td>
+                            <td>Bohrsgade 35, 1799 Kbh V (Carlsbergbyen)</td>
+                        </tr>
+                        <tr>
+                            <td>Food</td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td>Snakes</td>
+                            <td>Yes</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <!-- Generated at CSSPortal.com -->
+
+
 
             </div>
             <div class="welcome">
@@ -188,8 +214,8 @@
                     link below. We recommend using VS Code for editing this project but feel free to use any editor you
                     prefer. The
                     project has a Readme file that explains how to get going.</p><a
-                    href="https://github.com/cygni/snakebot-client-js"><img class="gitlogo"
-                        src="./assets/gitlogo.png" alt="github-logo"></a>
+                    href="https://github.com/cygni/snakebot-client-js"><img class="gitlogo" src="./assets/gitlogo.png"
+                        alt="github-logo"></a>
             </div>
         </section>
 

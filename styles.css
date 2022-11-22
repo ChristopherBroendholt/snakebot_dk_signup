@@ -266,25 +266,25 @@ footer p {
   width: 250px
 }
 
-.information-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(5, 1fr);
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;
-  max-width: 200px;
+table.customTable {
+  width: 100%;
+  border-collapse: collapse;
+  border-width: 0px;
+  border-color: #7EA8F8;
+  border-style: solid;
+  color: white;
 }
 
-.information-grid1 { grid-area: 1 / 1 / 2 / 2; }
-.information-grid2 { grid-area: 1 / 2 / 2 / 3; }
-.information-grid3 { grid-area: 2 / 2 / 3 / 3; }
-.information-grid4 { grid-area: 2 / 1 / 3 / 2; }
-.information-grid5 { grid-area: 3 / 1 / 4 / 2; }
-.information-grid6 { grid-area: 3 / 2 / 4 / 3; }
-.information-grid7 { grid-area: 4 / 2 / 5 / 3; }
-.information-grid8 { grid-area: 4 / 1 / 5 / 2; }
-.information-grid9 { grid-area: 5 / 1 / 6 / 2; }
-.information-grid10 { grid-area: 5 / 2 / 6 / 3; }
+table.customTable td, table.customTable th {
+  border-width: 0px;
+  border-color: #7EA8F8;
+  border-style: solid;
+  padding: 5px;
+}
+
+table.customTable thead {
+  background-color: #7EA8F8;
+}
 
 .form-container{
   display: flex;
