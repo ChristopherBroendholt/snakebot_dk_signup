@@ -1,0 +1,288 @@
+@import url(https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap);body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
+  margin: 0
+}
+
+code {
+  font-family: source-code-pro,Menlo,Monaco,Consolas,Courier New,monospace
+}
+
+body {
+  overscroll-behavior-x: none;
+  overscroll-behavior-y: none
+}
+
+#root,body {
+  min-height: 100vh
+}
+
+#root {
+  display: flex;
+  flex-direction: column
+}
+
+section {
+  flex-grow: 1
+}
+
+p {
+  font-family: Barlow;
+  font-size: 1em
+}
+
+label {
+  font-size: 1em;
+  text-align: left
+}
+
+h1,label {
+  font-family: Barlow Condensed;
+  font-weight: 600
+}
+
+h1 {
+  font-size: 2.7em;
+  margin-bottom: 0
+}
+
+h2 {
+  font-family: Barlow Condensed;
+  font-size: 1.7em;
+  font-weight: 500
+}
+
+iframe {
+  margin-bottom: 2rem;
+  margin-top: 2rem
+}
+
+.header-image {
+  background: linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.5)),url(./assets/space_background.png);
+  background-attachment: relative;
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 105vh;
+  margin-top: -10rem;
+  width: 100%
+}
+
+.header-image img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 15vw
+}
+
+.header-image .header-content {
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 32vh;
+  width: 30vw
+}
+
+.header-image h1 {
+  color: #fff;
+  font-size: 5em;
+  font-weight: 600;
+  line-height: 1em;
+  padding-bottom: 2rem;
+  text-align: center
+}
+
+.welcome {
+  margin-left: 20%;
+  margin-right: 20%;
+  padding-bottom: 5rem;
+  padding-top: 5rem
+}
+
+.welcome h2 {
+  margin-top: 3rem
+}
+
+.welcome li {
+  font-family: Barlow;
+  font-size: 1em
+}
+
+.getting-started {
+  background-color: #000735;
+  padding: 5rem 20%
+}
+
+.getting-started h1,.getting-started p {
+  color: #fff
+}
+
+.getting-started h2 {
+  color: #fff;
+  padding-top: 2rem
+}
+
+.getting-started a {
+  color: #fff
+}
+
+.cygni-at-campus {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 20%;
+  padding-right: 20%;
+  padding-top: 8rem
+}
+
+header {
+  background-color: #000735;
+  padding: 2rem 5rem;
+  z-index: 1
+}
+
+header ul {
+  list-style-type: none;
+  margin: 0
+}
+
+header li {
+  float: left;
+  padding: 0 1rem
+}
+
+header nav {
+  float: right;
+  margin-top: 2rem
+}
+
+header nav a {
+  border-bottom: none;
+  color: hsla(0,0%,100%,.7)
+}
+
+header nav a,header nav a:hover {
+  font-size: 16px;
+  text-decoration: none;
+  transition: all .1s
+}
+
+header nav a.selected,header nav a:hover {
+  border-bottom: 3px solid #fff;
+  color: #fff
+}
+
+header img {
+  width: 200px
+}
+
+footer {
+  background-color: #e3d9d7;
+  height: 7rem;
+  padding: 2rem 5rem
+}
+
+footer img {
+  float: left;
+  vertical-align: middle;
+  width: 150px
+}
+
+footer p {
+  color: hsla(0,0%,100%,.7);
+  float: right;
+  font-size: 12px
+}
+
+.navbar-startpage {
+  background-color: transparent
+}
+
+.loginview {
+  margin-left: 20%;
+  margin-right: 20%;
+  padding-bottom: 5rem
+}
+
+.loginview h1 {
+  padding-top: 5rem
+}
+
+.loginview .logintext,.loginview h1 {
+  text-align: center
+}
+
+.loginview input {
+  border: 1px solid #dcdcdc;
+  border-radius: 6px;
+  box-sizing: border-box;
+  display: block;
+  margin: .5rem auto 1rem;
+  padding: 12px 20px;
+  width: 20vw;
+  width: 100%
+}
+
+.loginview .signInBtn {
+  background-color: #0ebde7;
+  border-color: #fff;
+  border-radius: 6px;
+  color: #fff;
+  cursor: pointer;
+  display: block;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2rem;
+  padding: 12px 20px;
+  width: 200px
+}
+
+.loginview .signInBtn:hover {
+  border-color: #0ebde7
+}
+
+.loginview .signInBtn:active {
+  -webkit-transform: translateY(2px);
+  transform: translateY(2px)
+}
+
+.loginview .error {
+  border-color: red!important
+}
+
+.loginview .error-text {
+  color: red;
+  font-size: 12px
+}
+
+.loginview span {
+  font-size: 10px;
+  margin-right: 3px;
+  vertical-align: middle
+}
+
+.gitlogo {
+  height: 150px;
+  width: 250px
+}
+
+.information-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  max-width: 200px;
+}
+
+.information-grid1 { grid-area: 1 / 1 / 2 / 2; }
+.information-grid2 { grid-area: 1 / 2 / 2 / 3; }
+.information-grid3 { grid-area: 2 / 2 / 3 / 3; }
+.information-grid4 { grid-area: 2 / 1 / 3 / 2; }
+.information-grid5 { grid-area: 3 / 1 / 4 / 2; }
+.information-grid6 { grid-area: 3 / 2 / 4 / 3; }
+.information-grid7 { grid-area: 4 / 2 / 5 / 3; }
+.information-grid8 { grid-area: 4 / 1 / 5 / 2; }
+.information-grid9 { grid-area: 5 / 1 / 6 / 2; }
+.information-grid10 { grid-area: 5 / 2 / 6 / 3; }
+

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css">
+    <title>Document</title>
+</head>
+
+<script>
+    function formSubmit(event) {
+        console.warn("TETSTSTSTST")
+        var url = "https://docs.google.com/forms/u/0/d/e/1FAIpQLScpgfvCRqHilctHXQHNHyqR_8EK8hmOWzcJZjs6VH6ZBa8IWw/formResponse";
+        fetch(url, {
+            "headers": {
+                "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
+                "accept-language": "en-US,en;q=0.9",
+                "cache-control": "max-age=0",
+                "content-type": "application/x-www-form-urlencoded",
+                "sec-ch-ua": "\"Google Chrome\";v=\"107\", \"Chromium\";v=\"107\", \"Not=A?Brand\";v=\"24\"",
+                "sec-ch-ua-mobile": "?0",
+                "sec-ch-ua-platform": "\"Windows\"",
+                "sec-fetch-dest": "iframe",
+                "sec-fetch-mode": "navigate",
+                "sec-fetch-site": "same-origin",
+                "sec-fetch-user": "?1",
+                "upgrade-insecure-requests": "1",
+                "x-chrome-connected": "source=Chrome,id=107330622612448266543,mode=0,enable_account_consistency=false,consistency_enabled_by_default=false",
+                "x-client-data": "CJW2yQEIpbbJAQjEtskBCKmdygEIkqHLAQjF4cwBCPLtzAEI/u3MAQ=="
+            },
+            "referrer": "https://docs.google.com/forms/d/e/1FAIpQLScpgfvCRqHilctHXQHNHyqR_8EK8hmOWzcJZjs6VH6ZBa8IWw/viewform?embedded=true&fbzx=7119438648536718658",
+            "referrerPolicy": "strict-origin-when-cross-origin",
+            "body": new FormData(event.target),
+            "method": "POST",
+            "mode": "cors",
+            "credentials": "include"
+        });
+
+        event.preventDefault();
+    }
+
+    window.addEventListener("load", () => {
+        // and you can attach form submit event like this for example
+        document.getElementById("formId").addEventListener("submit", formSubmit);
+        
+    })
+
+    function setHeight(px){
+        const iframe = document.getElementById("google-form")
+        iframe.setAttribute("height", `${px}px`) 
+    }
+</script>
+
+<body>
+    <div class="root">
+        <header class="navbar-startpage">
+            <a href="/"><img src="./assets/snakelogo.png" alt="Snakebot-logo"></a>
+            <nav>
+                <ul>
+                    <!-- <li><a aria-current="page" class="selected" href="/">Start</a></li>
+                    <li><a class="" href="/viewgame">Game</a></li>
+                    <li><a class="" href="/arena">Arena</a></li>
+                    <li><a class="" href="/login">Login</a></li> -->
+                </ul>
+            </nav>
+        </header>
+
+        <section>
+            <div class="header-image">
+                <div class="header-content">
+                    <h1>Welcome to Danish Snakebot Competition!</h1>
+                    <img src="./assets/cygni-logo.svg" alt="cygni-logo">
+                    
+                </div>
+            </div>
+            <div class="getting-started">
+                <h1>Participate</h1>
+                <p>Sign up for the next Danish Snakebot Championship hosted by Cygni, part of accenture.</p>
+                <!-- <iframe id="google-form" src="https://docs.google.com/forms/d/e/1FAIpQLScpgfvCRqHilctHXQHNHyqR_8EK8hmOWzcJZjs6VH6ZBa8IWw/viewform?embedded=true" 
+                    width="640" 
+                    height="710" 
+                    frameborder="0" 
+                    marginheight="0" 
+                    marginwidth="0" 
+                    style="margin-left:-30px"
+                >
+                    Loading…
+                </iframe> -->
+
+                <form id="formId" onsubmit="formSubmit(event)">
+                    <input type="text" id="entry.2100287075" name="entry.2100287075"/>
+                    <input type="text" id="entry.1074724636" name="entry.1074724636"/>
+                    <input type="submit" value="Submit" />
+                </form>
+
+                fetch("https://docs.google.com/forms/u/0/d/e/1FAIpQLScpgfvCRqHilctHXQHNHyqR_8EK8hmOWzcJZjs6VH6ZBa8IWw/formResponse?embedded=true", {
+                    "headers": {
+                      "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
+                      "accept-language": "en-US,en;q=0.9",
+                      "cache-control": "max-age=0",
+                      "content-type": "application/x-www-form-urlencoded",
+                      "sec-ch-ua": "\"Google Chrome\";v=\"107\", \"Chromium\";v=\"107\", \"Not=A?Brand\";v=\"24\"",
+                      "sec-ch-ua-mobile": "?0",
+                      "sec-ch-ua-platform": "\"Windows\"",
+                      "sec-fetch-dest": "iframe",
+                      "sec-fetch-mode": "navigate",
+                      "sec-fetch-site": "same-origin",
+                      "sec-fetch-user": "?1",
+                      "upgrade-insecure-requests": "1",
+                      "x-chrome-connected": "source=Chrome,id=107330622612448266543,mode=0,enable_account_consistency=false,consistency_enabled_by_default=false",
+                      "x-client-data": "CJW2yQEIpbbJAQjEtskBCKmdygEIkqHLAQjF4cwBCPLtzAEI/u3MAQ=="
+                    },
+                    "referrer": "https://docs.google.com/forms/d/e/1FAIpQLScpgfvCRqHilctHXQHNHyqR_8EK8hmOWzcJZjs6VH6ZBa8IWw/viewform?embedded=true&fbzx=7119438648536718658",
+                    "referrerPolicy": "strict-origin-when-cross-origin",
+                    "body": "entry.2100287075=test&entry.1074724636=test&dlut=1669122506339&hud=true&fvv=1&partialResponse=%5Bnull%2Cnull%2C%227119438648536718658%22%5D&pageHistory=0&fbzx=7119438648536718658",
+                    "method": "POST",
+                    "mode": "cors",
+                    "credentials": "include"
+                  });
+
+                <h2>Event information</h2>
+                <div class="information-grid">
+                    <div class="information-grid1"><p><strong>Date</strong></p></div>
+                    <div class="information-grid4"><p><strong>Time</strong></p></div>
+                    <div class="information-grid5"><p><strong>Location</strong></p></div>
+                    <div class="information-grid8"><p><strong>Food/Drink</strong></p></div>
+                    <div class="information-grid9"><p><strong>Snakes</strong></p></div>
+
+                    <div class="information-grid2"><p>...</p></div>
+                    <div class="information-grid3"><p>...</p></div>
+                    <div class="information-grid6"><p>...</p></div>
+                    <div class="information-grid7"><p>Yes</p></div>
+                    <div class="information-grid10"><p>Yes</p></div>
+                </div> 
+
+            </div>
+            <div class="welcome">
+                <h1>Introduction</h1>
+                <p>Remember the old game of Snake? One of the first common implementations was available on the phone
+                    Nokia 3310.
+                    Snake Record - Nokia 3310</p>
+                <p>This game is a bit different. To play you need to program your own Snake Bot and you will be
+                    competing against
+                    other bots! The concept is simple, your snake can move UP, DOWN, RIGHT or LEFT and the winner is the
+                    last snake
+                    alive. Extra points are awarded when eating stars or nibbling on other snake's tails. Look out for
+                    the black
+                    holes though!</p>
+                <p>Checkout the screencasts below:</p><iframe width="560" height="315"
+                    src="https://www.youtube.com/embed/9FGxNwOONIc" title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen=""></iframe>
+                <p>We at Cygni love programming. We also love a friendly competetion over a couple of beers. What better
+                    way to
+                    combine these two things than a battle in programming!</p>
+                <p>Hack your own Snake Bot and train it in the Training room. From time to time we hold tournaments
+                    where you will
+                    be able to face other player's Snake Bots.</p>
+                <h2>Game rules</h2>
+                <p>The rules are configurable per game, upon every game start the clients will be notified of the
+                    current game
+                    settings. Here are the default rules:</p>
+                <ul>
+                    <li>Snake grows every third game tick</li>
+                    <li>Each client must respond within 250ms</li>
+                    <li>1 point per Snake growth</li>
+                    <li>2 points per star consumed</li>
+                    <li>10 points per tail nibble</li>
+                    <li>5 points per caused death (another snake crashes and dies into your snake)</li>
+                    <li>5 black holes</li>
+                    <li>A nibbled tail is protected for 3 game ticks</li>
+                    <li>The last surviving Snake always wins. The ranking for dead snakes is based on accumulated points
+                    </li>
+                </ul>
+            </div>
+            <div class="getting-started">
+                <h1>Getting started</h1>
+                <p>Your mission is to write the best Snake Bot and survive within the game world. All the boring stuff
+                    concerning
+                    server-client communication, message parsing and event handling is already implemented.</p>
+                <h2>General principles</h2>
+                <p>The game progresses through Game Ticks. For each Game Tick participating Snake Bots have to choose an
+                    action (and
+                    they have to do it fast, response is expected within 250ms). Actions are defined by a direction to
+                    move the
+                    Snake head in. A Snake head may move UP, DOWN, RIGHT or LEFT.</p>
+                <p>On every Game Tick each Snake Bot receives the current Map. The map contains the positions of all the
+                    objects in
+                    the map.</p>
+                <h2>JavaScript client</h2>
+                <p>The client is written in JavaScript and the project can be cloned through the GitHub repository via
+                    the image
+                    link below. We recommend using VS Code for editing this project but feel free to use any editor you
+                    prefer. The
+                    project has a Readme file that explains how to get going.</p><a
+                    href="https://github.com/cygni/snakebot-client-js"><img class="gitlogo"
+                        src="./assets/gitlogo.png" alt="github-logo"></a>
+            </div>
+        </section>
+
+        <section class="section-two">
+
+        </section>
+
+    </div>
+</body>
+
+</html>
