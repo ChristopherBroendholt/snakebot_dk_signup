@@ -32,6 +32,11 @@ p {
   font-size: 1em
 }
 
+small {
+  font-family: Barlow;
+  color: white
+}
+
 label {
   font-size: 1em;
   text-align: left
