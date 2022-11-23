@@ -10,7 +10,52 @@
 </head>
 
 <script>
-    let signed_up = false
+    let name, email, dietaryRestrictions;
+
+    function showSignupReply() {
+        const form = document.getElementById("formId")
+        const reply = document.getElementById("signup-reply")
+
+        const nameElem = document.getElementById("reply-name")
+        const emailElem = document.getElementById("reply-email")
+        const dietaryElem = document.getElementById("reply-dietary")
+
+        form.style.display = "none"
+        reply.style.display = "block"
+
+        nameElem.innerText = "Navn: " + name
+        emailElem.innerText = "Email: " + email
+        dietaryElem.innerText = dietaryRestrictions === "" ? "Kostrestriktioner: Ingen" : "Kostrestriktioner: " + dietaryRestrictions
+    }
+
+    //populating input data
+    function getInputData() {
+        let dataToPost = new FormData(); //formdata API
+
+        name = document.getElementById("input1").value
+        email = document.getElementById("input2").value
+        dietaryRestrictions = document.getElementById("input3").value
+
+        if (name === "") {
+            alert("Name is required")
+            return undefined;
+        }
+        else if (email === "") {
+            alert("Email is required")
+            return undefined
+        }
+        else if (email === "" && name === "") {
+            alert("Email and name is required")
+            return undefined;
+        }
+
+        //fill name attributes to corresponding values
+        dataToPost.append("entry.2100287075", name);
+        dataToPost.append("entry.1074724636", email);
+        dataToPost.append("entry.730702305", dietaryRestrictions)
+
+        return dataToPost;
+    }
 
     window.addEventListener("load", () => {
 
@@ -35,38 +80,11 @@
                 },
                 body: bodyData
             })
-                .then(signed_up = true)
+                .then(() => {
+                    showSignupReply()
+                })
                 .catch(); //promise based
         });
-
-        //populating input data
-        function getInputData() {
-            let dataToPost = new FormData(); //formdata API
-
-            let name = document.getElementById("input1").value
-            let email = document.getElementById("input2").value
-            let dietaryRestrictions = document.getElementById("input3").value
-
-            if (name === "") {
-                alert("Name is required")
-                return undefined;
-            }
-            else if (email === "") {
-                alert("Email is required")
-                return undefined
-            }
-            else if (email === "" && name === "") {
-                alert("Email and name is required")
-                return undefined;
-            }
-
-            //fill name attributes to corresponding values
-            dataToPost.append("entry.2100287075", name);
-            dataToPost.append("entry.1074724636", email);
-            dataToPost.append("entry.730702305", dietaryRestrictions)
-
-            return dataToPost;
-        }
     })
 </script>
 
@@ -103,9 +121,23 @@
                     </div>
                     <div class="form-input-container">
                         <input type="submit" value="Tilmeld" />
-                        <small>* Din data vil kun blive brugt til at sende mails vedrørende snakebot konkurrencen, og vil blive slettet efter.</small>
+                        <small>* Din data vil kun blive brugt til at sende mails vedrørende snakebot konkurrencen, og
+                            vil blive slettet efter.</small>
                     </div>
                 </form>
+
+                <div id="signup-reply" style="display: none;">
+                    <h2>Tak for Tilmeldingen</h2>
+                    <p style="background-color: red;">TODO: Du vil modtage en mail med en bekræftelse inden for ...</p>
+                    <p>Dine oplysninger:</p>
+                    <p id="reply-name"></p>
+                    <p id="reply-email"></p>
+                    <p id="reply-dietary"></p>
+                    <p>Hvis du har nogen spørgsmål eller vil ændre noget ved din indtastning, kontakt venligt
+                        nedenstående.</p>
+                    <p style="background-color: red;">TODO: mail</p>
+                </div>
+
 
                 <h2>Information</h2>
 
@@ -150,7 +182,7 @@
                 <p>Dette spil er lidt anderledes. For at spille skal du programmere din egen Snake Bot, og den skal
                     konkurrerer imod andre bots! Konceptet er enkelt, din slange kan bevæge sig OP, NED, HØJRE eller
                     VENSTRE, og vinderen er
-                    sidste slange i live. Der gives ekstra point, når man spiser stjerner eller nipper i andre slangers
+                    sidste slange i live. Der gives ekstra point når man spiser stjerner eller hapser i andre slangers
                     haler.
                     Men pas på de sorte huller!</p>
                 <p>Se videon under for mere information:</p><iframe width="560" height="315"
@@ -158,11 +190,10 @@
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen=""></iframe>
                 <p>
-                    Vi hos Cygni elsker programmering. Vi elsker også en venskabelig konkurrence over et par øl. Hvad
-                    bedre
-                    måde at kombinere disse to ting end en kamp i programmering!
+                    Vi hos Cygni elsker programmering. Vi elsker også en venskabelig konkurrence over et par øl/sodavand/kaffe. 
+                    Hvad er bedre end at kombinere disse to ting i en kamp i programmering!
                 </p>
-                <p>Hack din egen Snake Bot og træne den i træningsrummet. Fra tid til anden afholder vi turneringer
+                <p>Hack din egen Snake Bot og træn den i træningsrummet. Fra tid til anden afholder vi turneringer
                     hvor du vil
                     være i stand til at møde andre spillers Snake Bots.</p>
                 <h2>Spillets regler</h2>
@@ -170,14 +201,14 @@
                     nuværende spil
                     indstillinger. Her er standardreglerne:</p>
                 <ul>
-                    <li>Slangen vokser med en for hvert 3. game tick</li>
+                    <li>Slangen vokser med en i længden for hvert 3. game tick</li>
                     <li>Hver client skal svare inden 200ms</li>
-                    <li>1 point hver gangen ens slange vokser</li>
-                    <li>2 point hver ganf man spiser en stjerne</li>
-                    <li>10 point for hvert hale nibble</li>
-                    <li>5 point hver gang man gør en anden dør (en anden slange der går ind i den slange)</li>
+                    <li>1 point hver gang ens slange vokser</li>
+                    <li>2 point hver gang man spiser en stjerne</li>
+                    <li>10 point for hvert hale haps</li>
+                    <li>5 point hver gang man gør en anden dør (en anden slange der går ind i din slange)</li>
                     <li>5 sorte huller</li>
-                    <li>En nibbled hale er beskyttet i 3 game ticks</li>
+                    <li>En hapset hale er beskyttet i 3 game ticks</li>
                     <li>Den sidste levende slange vinder, rangering for de døde slanger er baseret på point
                     </li>
                 </ul>
@@ -186,22 +217,25 @@
                 <h1>Kom i gang</h1>
                 <p>Din mission er at skrive den bedste Snake Bot og overleve i spilverdenen. Alle de kedelige ting
                     vedrørende
-                    server-klient kommunikation, meddelelsesparsing og hændelseshåndtering er allerede implementeret.</p>
+                    server-klient kommunikation, meddelelsesparsing og hændelseshåndtering er allerede implementeret.
+                </p>
                 <h2>Generelle principper</h2>
                 <p>Spillet skrider frem gennem Game Ticks. For hvert Game Tick skal ens Snake Bot vælge en
-                    handling (og de skal gøre det hurtigt, svar forventes inden for 250ms). 
+                    handling (og de skal gøre det hurtigt, svar forventes inden for 250ms).
                     Handlinger er defineret af en retning der skal flytte dit slangehoved.
                     Et slangehoved kan bevæge sig OP, NED, HØJRE eller VENSTRE.
                 </p>
-                <p>Ved hvert game tick får ens snake bot hele game kortet med de positioner for snakes, stjerner og sorte huller.</p>
+                <p>Ved hvert game tick får ens snake bot hele game kortet med positioner for andre snakes, stjerner og
+                    sorte huller.</p>
                 <h2>JavaScript-klient</h2>
                 <p>Klienten er skrevet i JavaScript, og projektet kan klones gennem GitHub-linket via
                     billedet.
-                    link nedenfor. Vi anbefaler at bruge VS-kode til at redigere dette projekt, men du er velkommen til at bruge enhver editor du
-                    foretrække. Det
-                    projekt har en Readme-fil, der forklarer, hvordan man kommer i gang.</p>
-                <a href="https://github.com/cygni/snakebot-client-js"><img class="gitlogo" src="./assets/gitlogo.png" alt="github-logo"></a>
-            
+                    link nedenfor. Vi anbefaler at bruge VS-kode til at redigere dette projekt, men du er velkommen til
+                    at bruge enhver editor du foretrækker. 
+                    Projektet har en Readme-fil, der forklarer, hvordan man kommer i gang.</p>
+                <a href="https://github.com/cygni/snakebot-client-js"><img class="gitlogo" src="./assets/gitlogo.png"
+                        alt="github-logo"></a>
+
             </div>
         </section>
 
